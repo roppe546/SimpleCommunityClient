@@ -39,7 +39,7 @@ public class LogBean {
 //        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
 //      TODO: MAKE DYNAMIC USER_ID
         int USER_ID = 4;
-        SubmitNewLogViewModel newLog = new SubmitNewLogViewModel(USER_ID, "Hello from Emma!", "Hello World!");
+        SubmitNewLogViewModel newLog = new SubmitNewLogViewModel(USER_ID, this.message, this.subject);
 
         Response reponse = client.target("http://130.237.84.200:8080/community/webapi/logs")
                 .request()
