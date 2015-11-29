@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="SimpleCommunityClient:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="SimpleCommunityClient:war exploded">
     <output-path>$PROJECT_DIR$/target/SimpleCommunityModel</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">

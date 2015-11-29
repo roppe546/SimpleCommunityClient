@@ -1,27 +1,25 @@
-package org.roppe546.com.viewmodels;
-
-import javax.xml.bind.annotation.XmlRootElement;
+package org.roppe546.com.models;
 
 /**
- * Created by Peonsson on 13/11/15.
+ * Created by Peonsson on 2015-11-29.
  */
-
-@XmlRootElement
-public class UserViewModel {
+public class CreateUser {
 
     private String email;
     private String username;
+    private String password;
     private String firstname;
     private String lastname;
     private String country;
     private String city;
 
-    public UserViewModel() {
+    public CreateUser() {
     }
 
-    public UserViewModel(String email, String username, String firstname, String lastname, String country, String city) {
+    public CreateUser(String email, String username, String password, String firstname, String lastname, String country, String city) {
         this.email = email;
         this.username = username;
+        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.country = country;
@@ -42,6 +40,14 @@ public class UserViewModel {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstname() {
@@ -78,9 +84,10 @@ public class UserViewModel {
 
     @Override
     public String toString() {
-        return "UserViewModel{" +
+        return "CreateUser{" +
                 "email='" + email + '\'' +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", country='" + country + '\'' +

@@ -1,5 +1,6 @@
 package org.roppe546.com.beans;
 
+import org.roppe546.com.models.CreateUser;
 import org.roppe546.com.viewmodels.UserViewModel;
 
 import javax.faces.bean.ManagedBean;
@@ -96,24 +97,21 @@ public class UserBean {
     }
 
     public void register() {
-//        boolean registerSuccess = UserHandler.registerUser(email, username, password, firstname, lastname, country, city);
 
         Client client = ClientBuilder.newClient();
-        WebTarget baseTarget = client.target("http://130.237.84.200:8080/community/webapi/");
-        WebTarget messageTarget = baseTarget.path("users/register");
+        WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/register");
 
+        CreateUser newUser = new CreateUser(this.email, this.password, this.username, this.firstname, this.lastname, this.country, this.city);
 
+        System.out.println(newUser);
 
-//        if (registerSuccess) {
-//            try {
-//                ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
-//            } catch (IOException e) {
-//                System.out.println("failed redirecting");
-//                e.printStackTrace();
-//            }
-//        } else {
-//            // TODO: Assign variable if registration failed. (http://stackoverflow.com/questions/15452539/redirecting-form-jsf-managed-bean-and-showing-js-alert-based-on-condition-in-man)
-//        }
+        Response postResponse = target.request().post(Entity.json(newUser));
+
+        if(postResponse.getStatus() != 201) {
+            System.err.println("register status: " + postResponse.getStatus());
+        }
+
+        System.out.println(postResponse.toString());
+
     }
 }
