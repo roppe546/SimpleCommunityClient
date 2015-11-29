@@ -1,9 +1,17 @@
 package org.roppe546.com.beans;
 
+import org.roppe546.com.viewmodels.CreateUserViewModel;
 import org.roppe546.com.viewmodels.LogViewModel;
+import org.roppe546.com.viewmodels.UserViewModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -24,17 +32,25 @@ public class UserProfileBean {
     public String getProfile(String id) {
 
         this.id = id;
-        System.out.println("user id = " + id);
 
-//        User user = UserHandler.getUser(Integer.parseInt(id));
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/")
+                .queryParam("id", id);
 
-//        this.username = user.getUsername();
-//        this.firstname = user.getFirstname();
-//        this.lastname = user.getLastname();
-//        this.country = user.getCountry();
-//        this.city = user.getCity();
+        UserViewModel user = target.request(MediaType.APPLICATION_JSON)
+                .get(UserViewModel.class);
 
-//        logs = LogHandler.fetchLogs(Integer.parseInt(id));
+        this.username = user.getUsername();
+        this.firstname = user.getFirstname();
+        this.lastname = user.getLastname();
+        this.country = user.getCountry();
+        this.city = user.getCity();
+
+        WebTarget logsTarget = client.target("http://130.237.84.200:8080/community/webapi/logs")
+                .queryParam("id", id);
+
+        LogViewModel logs = logsTarget.request(MediaType.APPLICATION_JSON)
+                .get(LogViewModel.class);
 
         return "profile.xhtml";
     }
