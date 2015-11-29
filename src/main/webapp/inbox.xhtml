@@ -12,7 +12,7 @@
     <h:dataTable value="#{ReadPrivateMessage.messages}" var="item">
         <h:column>
             <f:facet name="header">Sender</f:facet>
-            <h:outputText value="#{item.sender.username}"></h:outputText>
+            <h:outputText value="#{item.sender}"></h:outputText>
         </h:column>
         <h:column>
             <f:facet name="header">Subject</f:facet>
