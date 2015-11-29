@@ -1,8 +1,4 @@
-//package org.roppe546.com;
-//
-//
-//import BusinessLogic.LogHandler;
-//import Entity.UserLog;
+//package org.roppe546.com.beans;
 //
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.SessionScoped;
@@ -26,8 +22,8 @@
 //    }
 //
 //    public void submit() {
-//        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
-//        LogHandler.submit(userId, subject, message);
+////        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
+////        LogHandler.submit(userId, subject, message);
 //    }
 //
 //    public List<UserLog> getLogs() {
