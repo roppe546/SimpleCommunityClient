@@ -1,6 +1,4 @@
-//package org.roppe546.com;
-//
-//import BusinessLogic.UserHandler;
+//package org.roppe546.com.beans;
 //
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.SessionScoped;
