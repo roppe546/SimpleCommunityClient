@@ -110,8 +110,5 @@ public class UserBean {
         if(postResponse.getStatus() != 201) {
             System.err.println("register status: " + postResponse.getStatus());
         }
-
-        System.out.println(postResponse.toString());
-
     }
 }
