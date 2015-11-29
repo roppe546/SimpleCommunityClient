@@ -63,6 +63,8 @@ public class LoginBean {
         this.loggedIn = loggedIn;
     }
 
+
+    //TODO IMPLEMENT LOGIN LOGIC
     public String login() {
 
         Client client = ClientBuilder.newClient();
@@ -74,6 +76,7 @@ public class LoginBean {
         Response postResponse = target.request().post(Entity.json(loginUser));
 
         if(postResponse.getStatus() != 200) {
+            setLoggedIn(false);
             System.err.println("login getStatus: " + postResponse.getStatus());
             return "index.xhtml";
         }
