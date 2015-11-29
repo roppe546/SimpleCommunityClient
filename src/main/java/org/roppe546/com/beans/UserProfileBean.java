@@ -35,7 +35,7 @@ public class UserProfileBean {
         Client client = ClientBuilder.newClient();
 
 //      TODO: MAKE DYNAMIC USER_ID
-        String USER_ID = "/4";
+        String USER_ID = "/" + id;
 
         WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/")
 //               TODO: MAKE DYNAMIC USER_ID
@@ -44,7 +44,6 @@ public class UserProfileBean {
         UserViewModel user = target.request(MediaType.APPLICATION_JSON)
                 .get(UserViewModel.class);
 
-        this.id = String.valueOf(user.getId());
         this.username = user.getUsername();
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
