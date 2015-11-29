@@ -1,11 +1,9 @@
 package org.roppe546.com.beans;
 
-import org.roppe546.com.models.CreateUser;
 import org.roppe546.com.viewmodels.LoginViewModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;

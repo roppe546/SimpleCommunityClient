@@ -1,7 +1,5 @@
 package org.roppe546.com.beans;
 
-import org.roppe546.com.SessionBean;
-import org.roppe546.com.models.CreateUser;
 import org.roppe546.com.viewmodels.LogViewModel;
 import org.roppe546.com.viewmodels.SubmitNewLogViewModel;
 
@@ -10,7 +8,6 @@ import javax.faces.bean.SessionScoped;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -61,10 +58,11 @@ public class LogBean {
 
         Client client = ClientBuilder.newClient();
 
-//        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
+        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
 //      TODO: MAKE DYNAMIC USER_ID
         String USER_ID = "/4";
-        List list = client.target("http://130.237.84.200:8080/community/webapi/logs").path(USER_ID)
+        List list = client.target("http://130.237.84.200:8080/community/webapi/logs")
+                .path(USER_ID)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<LogViewModel>>() { });
 

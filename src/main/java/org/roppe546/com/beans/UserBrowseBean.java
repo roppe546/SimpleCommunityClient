@@ -25,14 +25,14 @@ public class UserBrowseBean {
     }
 
     public List<UserViewModel> getUsers() {
-//
-//        Client client = ClientBuilder.newClient();
-//
-//        List list = client.target("http://130.237.84.200:8080/community/webapi/users")
-//                .request(MediaType.APPLICATION_JSON)
-//                .get(new GenericType<List<UserViewModel>>() { });
 
-        return this.users;
+        Client client = ClientBuilder.newClient();
+
+        List list = client.target("http://130.237.84.200:8080/community/webapi/users")
+                .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<UserViewModel>>() { });
+
+        return list;
     }
 
     public void setUsers(List<UserViewModel> users) {

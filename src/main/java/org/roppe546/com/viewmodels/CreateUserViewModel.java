@@ -1,9 +1,9 @@
-package org.roppe546.com.models;
+package org.roppe546.com.viewmodels;
 
 /**
  * Created by Peonsson on 2015-11-29.
  */
-public class CreateUser {
+public class CreateUserViewModel {
 
     private String email;
     private String username;
@@ -13,10 +13,10 @@ public class CreateUser {
     private String country;
     private String city;
 
-    public CreateUser() {
+    public CreateUserViewModel() {
     }
 
-    public CreateUser(String email, String username, String password, String firstname, String lastname, String country, String city) {
+    public CreateUserViewModel(String email, String username, String password, String firstname, String lastname, String country, String city) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -84,7 +84,7 @@ public class CreateUser {
 
     @Override
     public String toString() {
-        return "CreateUser{" +
+        return "CreateUserViewModel{" +
                 "email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

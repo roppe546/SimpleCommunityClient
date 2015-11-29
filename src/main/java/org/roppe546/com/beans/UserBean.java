@@ -1,7 +1,6 @@
 package org.roppe546.com.beans;
 
-import org.roppe546.com.models.CreateUser;
-import org.roppe546.com.viewmodels.UserViewModel;
+import org.roppe546.com.viewmodels.CreateUserViewModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -9,8 +8,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Form;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -100,7 +97,7 @@ public class UserBean {
 
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/register");
-        CreateUser newUser = new CreateUser(this.email, this.password, this.username, this.firstname, this.lastname, this.country, this.city);
+        CreateUserViewModel newUser = new CreateUserViewModel(this.email, this.password, this.username, this.firstname, this.lastname, this.country, this.city);
         System.out.println(newUser);
 
         Response postResponse = target.request().post(Entity.json(newUser));
