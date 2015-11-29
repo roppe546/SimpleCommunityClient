@@ -58,7 +58,15 @@ public class LogBean {
     }
 
     public List<LogViewModel> getLogs() {
-        return logs;
+
+        Client client = ClientBuilder.newClient();
+//      TODO: MAKE DYNAMIC USER_ID
+        String USER_ID = "/4";
+        List list = client.target("http://130.237.84.200:8080/community/webapi/logs").path(USER_ID)
+                .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<LogViewModel>>() { });
+
+        return list;
     }
 
     public int getUserId() {
