@@ -82,22 +82,18 @@ public class LoginBean {
 
         setLoggedIn(true);
         return "timeline.xhtml";
-//
 //        if (userId > -1) {
-//
 ////            HttpSession session = SessionBean.getSession();
 ////            session.setAttribute("userId", userId);
 ////            session.setAttribute("username", username);
-//
 //        }
-//
 //        return "index.xhtml";
     }
 
     public String logout() {
 //        HttpSession session = SessionBean.getSession();
-
 //        session.invalidate();
+        this.loggedIn = false;
         return "login";
     }
 }
