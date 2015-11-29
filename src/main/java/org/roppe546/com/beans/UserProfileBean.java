@@ -10,6 +10,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -31,15 +32,19 @@ public class UserProfileBean {
 
     public String getProfile(String id) {
 
-        this.id = id;
-
         Client client = ClientBuilder.newClient();
+
+//      TODO: MAKE DYNAMIC USER_ID
+        String USER_ID = "/4";
+
         WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/")
-                .queryParam("id", id);
+//               TODO: MAKE DYNAMIC USER_ID
+                .path(USER_ID);
 
         UserViewModel user = target.request(MediaType.APPLICATION_JSON)
                 .get(UserViewModel.class);
 
+        this.id = String.valueOf(user.getId());
         this.username = user.getUsername();
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
@@ -47,10 +52,16 @@ public class UserProfileBean {
         this.city = user.getCity();
 
         WebTarget logsTarget = client.target("http://130.237.84.200:8080/community/webapi/logs")
-                .queryParam("id", id);
+        //      TODO: MAKE DYNAMIC USER_ID
+                .path(USER_ID);
 
-        LogViewModel logs = logsTarget.request(MediaType.APPLICATION_JSON)
-                .get(LogViewModel.class);
+        List list = client.target("http://130.237.84.200:8080/community/webapi/logs")
+        //      TODO: MAKE DYNAMIC USER_ID
+                .path(USER_ID)
+                .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<LogViewModel>>() { });
+
+         this.logs = list;
 
         return "profile.xhtml";
     }
