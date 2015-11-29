@@ -99,7 +99,7 @@ public class UserBean {
     public void register() {
 
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/register");
+        WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/register");
 
         CreateUser newUser = new CreateUser(this.email, this.password, this.username, this.firstname, this.lastname, this.country, this.city);
 
