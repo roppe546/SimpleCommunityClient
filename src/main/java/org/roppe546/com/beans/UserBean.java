@@ -102,7 +102,7 @@ public class UserBean {
         WebTarget baseTarget = client.target("http://130.237.84.200:8080/community/webapi/");
         WebTarget messageTarget = baseTarget.path("users/register");
 
-        
+
 
 //        if (registerSuccess) {
 //            try {
