@@ -27,10 +27,6 @@
     <h:outputText value="#{UserProfile.city}"/> <br/> <br/>
 
     <h:form>
-        <p:commandButton value="Add as friend" action="#{AddFriend.addFriend(UserProfile.id)}" />
-    </h:form>
-
-    <h:form>
         <p:commandButton value="Send PM" action="#{SendPrivateMessage.sendPm(UserProfile.id)}" />
     </h:form>
 
