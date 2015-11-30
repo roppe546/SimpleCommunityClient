@@ -32,7 +32,7 @@ public class SendPrivateMessageBean {
 
         Client client = ClientBuilder.newClient();
 
-        PrivateMessageViewModel newMessage = new PrivateMessageViewModel(sender, receiver, this.message, this.subject);
+        PrivateMessageViewModel newMessage = new PrivateMessageViewModel(sender, receiver, this.subject, this.message);
 
         System.out.println("sender: " + sender);
         System.out.println("receiver: " + receiver);
