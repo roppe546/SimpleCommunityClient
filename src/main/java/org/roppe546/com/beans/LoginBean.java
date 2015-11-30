@@ -98,26 +98,44 @@ public class LoginBean {
 
         Response postResponse = target.request().post(Entity.json(loginUser));
 
-        if (postResponse.getStatus() != 200) {
-            setLoggedIn(false);
-            System.err.println("login getStatus: " + postResponse.getStatus());
-            return "index";
-        }
-        else {
-            setLoggedIn(true);
+        int userId = Integer.parseInt(postResponse.readEntity(ReturnCodeViewModel.class).toString());
 
+        if (userId > 0) {
+            // Set attributes in session
             HttpSession session = SessionBean.getSession();
-
-            int userId = Integer.parseInt(postResponse.readEntity(ReturnCodeViewModel.class).toString());
-
-            if (userId > 0) {
-                session.setAttribute("userId", userId);
-                session.setAttribute("username", username);
-            }
+            session.setAttribute("userId", userId);
+            session.setAttribute("username", username);
 
             setLoggedIn(true);
             return "timeline";
         }
+        else {
+            System.err.println("login getStatus: " + postResponse.getStatus());
+
+            setLoggedIn(false);
+            return "index";
+        }
+
+//        if (postResponse.getStatus() != 200) {
+//            setLoggedIn(false);
+//            System.err.println("login getStatus: " + postResponse.getStatus());
+//            return "index";
+//        }
+//        else {
+//            setLoggedIn(true);
+//
+//            HttpSession session = SessionBean.getSession();
+//
+//            int userId = Integer.parseInt(postResponse.readEntity(ReturnCodeViewModel.class).toString());
+//
+//            if (userId > 0) {
+//                session.setAttribute("userId", userId);
+//                session.setAttribute("username", username);
+//            }
+//
+//            setLoggedIn(true);
+//            return "timeline";
+//        }
     }
 
     public String logout() {
