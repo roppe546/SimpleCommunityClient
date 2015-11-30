@@ -34,16 +34,13 @@ public class UserProfileBean {
 
         Client client = ClientBuilder.newClient();
 
-//      TODO: MAKE DYNAMIC USER_ID
-        String USER_ID = "/" + id;
-
         WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/")
-//               TODO: MAKE DYNAMIC USER_ID
-                .path(USER_ID);
+                .path("/" + id);
 
         UserViewModel user = target.request(MediaType.APPLICATION_JSON)
                 .get(UserViewModel.class);
 
+        this.id = id;
         this.username = user.getUsername();
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
@@ -51,12 +48,10 @@ public class UserProfileBean {
         this.city = user.getCity();
 
         WebTarget logsTarget = client.target("http://130.237.84.200:8080/community/webapi/logs")
-        //      TODO: MAKE DYNAMIC USER_ID
-                .path(USER_ID);
+                .path("/" + id);
 
         List list = client.target("http://130.237.84.200:8080/community/webapi/logs")
-        //      TODO: MAKE DYNAMIC USER_ID
-                .path(USER_ID)
+                .path("/" + id)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<LogViewModel>>() { });
 

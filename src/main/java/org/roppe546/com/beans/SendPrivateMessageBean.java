@@ -32,16 +32,12 @@ public class SendPrivateMessageBean {
 
         Client client = ClientBuilder.newClient();
 
-//      TODO: MAKE DYNAMIC SENDER, RECEIVER
-        String SENDER = "4";
-        String RECEIVER = "4";
+        PrivateMessageViewModel newMessage = new PrivateMessageViewModel(sender, receiver, this.message, this.subject);
 
-        PrivateMessageViewModel newMessage = new PrivateMessageViewModel(SENDER, RECEIVER, this.message, this.subject);
-
-        System.out.println(sender);
-        System.out.println(receiver);
-        System.out.println(this.message);
-        System.out.println(this.subject);
+        System.out.println("sender: " + sender);
+        System.out.println("receiver: " + receiver);
+        System.out.println("mess: " + this.message);
+        System.out.println("subj: " + this.subject);
 
         Response response = client.target("http://130.237.84.200:8080/community/webapi/PrivateMessages")
                 .request(MediaType.APPLICATION_JSON)
@@ -50,7 +46,8 @@ public class SendPrivateMessageBean {
         return "profile.xhtml";
     }
 
-    public String sendPm() {
+    public String sendPm(String toUserId) {
+        this.receiver = toUserId;
         return "sendpm.xhtml";
     }
 
