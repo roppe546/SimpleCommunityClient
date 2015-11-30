@@ -24,14 +24,12 @@ public class ReadPrivateMessageBean {
 
     public List<PrivateMessageViewModel> getMessages() {
 
-        //TODO DYNAMIC USER_ID
-        String USER_ID = "/4";
+        String userId = SessionBean.getSession().getAttribute("userId").toString();
 
         Client client = ClientBuilder.newClient();
 
         List list = client.target("http://130.237.84.200:8080/community/webapi/PrivateMessages")
-                //TODO DYNAMIC USER_ID
-                .path(USER_ID)
+                .path("/" + userId)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<PrivateMessageViewModel>>() { });
 
@@ -40,14 +38,14 @@ public class ReadPrivateMessageBean {
 
     public void setMessages(List<PrivateMessageViewModel> messages) {
 
-        //TODO DYNAMIC USER_ID
-        String USER_ID = "/4";
+//        String USER_ID = "/4";
+        String userId = SessionBean.getSession().getAttribute("userId").toString();
+
 
         Client client = ClientBuilder.newClient();
 
         List list = client.target("http://130.237.84.200:8080/community/webapi/privatemessages")
-                //TODO DYNAMIC USER_ID
-                .path(USER_ID)
+                .path("/" + userId)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<PrivateMessageViewModel>>() { });
 
