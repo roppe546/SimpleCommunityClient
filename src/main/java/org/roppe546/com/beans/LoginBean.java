@@ -86,8 +86,6 @@ public class LoginBean {
         this.loggedIn = loggedIn;
     }
 
-
-    //TODO IMPLEMENT LOGIN LOGIC
     public String login() {
 
         Client client = ClientBuilder.newClient();
@@ -115,27 +113,6 @@ public class LoginBean {
             setLoggedIn(false);
             return "index";
         }
-
-//        if (postResponse.getStatus() != 200) {
-//            setLoggedIn(false);
-//            System.err.println("login getStatus: " + postResponse.getStatus());
-//            return "index";
-//        }
-//        else {
-//            setLoggedIn(true);
-//
-//            HttpSession session = SessionBean.getSession();
-//
-//            int userId = Integer.parseInt(postResponse.readEntity(ReturnCodeViewModel.class).toString());
-//
-//            if (userId > 0) {
-//                session.setAttribute("userId", userId);
-//                session.setAttribute("username", username);
-//            }
-//
-//            setLoggedIn(true);
-//            return "timeline";
-//        }
     }
 
     public String logout() {
