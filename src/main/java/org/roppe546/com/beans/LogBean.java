@@ -33,10 +33,8 @@ public class LogBean {
     public void submit() {
         Client client = ClientBuilder.newClient();
 
-//        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
-//      TODO: MAKE DYNAMIC USER_ID
-        int USER_ID = 4;
-        SubmitNewLogViewModel newLog = new SubmitNewLogViewModel(USER_ID, this.message, this.subject);
+        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
+        SubmitNewLogViewModel newLog = new SubmitNewLogViewModel(userId, this.message, this.subject);
 
         Response reponse = client.target("http://130.237.84.200:8080/community/webapi/logs")
                 .request()
@@ -58,11 +56,9 @@ public class LogBean {
 
         Client client = ClientBuilder.newClient();
 
-        //int userId = (Integer) SessionBean.getSession().getAttribute("userId");
-//      TODO: MAKE DYNAMIC USER_ID
-        String USER_ID = "/4";
+        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
         List list = client.target("http://130.237.84.200:8080/community/webapi/logs")
-                .path(USER_ID)
+                .path("/" + userId)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<LogViewModel>>() { });
 
