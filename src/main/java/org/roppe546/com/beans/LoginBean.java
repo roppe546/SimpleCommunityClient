@@ -50,15 +50,10 @@ public class LoginBean {
     public boolean isLoggedIn() {
         HttpSession session = SessionBean.getSession();
 
-        System.out.println("1");
         if (session != null) {
-            System.out.println("2");
             String user = (String) session.getAttribute("username");
+
             if (user != null) {
-                System.out.println("3");
-                System.out.println("LoginBean: found session");
-                System.out.println("LoginBean: session username = " + session.getAttribute("username"));
-                System.out.println("LoginBean: session user id = " + session.getAttribute("userId"));
                 return true;
             }
         }
@@ -75,7 +70,7 @@ public class LoginBean {
             }
         }
         catch (IOException e) {
-            System.out.println("Couldn't redirect to login page.");
+            System.err.println("Couldn't redirect to login page.");
             e.printStackTrace();
         }
 
@@ -92,7 +87,6 @@ public class LoginBean {
 
         WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/login");
         LoginViewModel loginUser = new LoginViewModel(this.username, this.password);
-        System.out.println(loginUser);
 
         Response postResponse = target.request().post(Entity.json(loginUser));
 
@@ -108,8 +102,6 @@ public class LoginBean {
             return "timeline";
         }
         else {
-            System.err.println("login getStatus: " + postResponse.getStatus());
-
             setLoggedIn(false);
             return "index";
         }

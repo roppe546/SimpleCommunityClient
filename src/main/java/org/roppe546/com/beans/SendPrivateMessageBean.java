@@ -34,11 +34,6 @@ public class SendPrivateMessageBean {
 
         PrivateMessageViewModel newMessage = new PrivateMessageViewModel(sender, receiver, this.subject, this.message);
 
-        System.out.println("sender: " + sender);
-        System.out.println("receiver: " + receiver);
-        System.out.println("mess: " + this.message);
-        System.out.println("subj: " + this.subject);
-
         Response response = client.target("http://130.237.84.200:8080/community/webapi/PrivateMessages")
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.json(newMessage));

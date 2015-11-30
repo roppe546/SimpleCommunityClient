@@ -98,7 +98,6 @@ public class UserBean {
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://130.237.84.200:8080/community/webapi/users/register");
         CreateUserViewModel newUser = new CreateUserViewModel(this.email, this.password, this.username, this.firstname, this.lastname, this.country, this.city);
-        System.out.println(newUser);
 
         Response postResponse = target.request().post(Entity.json(newUser));
 
