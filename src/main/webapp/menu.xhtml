@@ -10,7 +10,7 @@
 <f:view>
     <c:choose>
         <c:when test="#{Login.loggedIn == true}">
-            <h:form>
+            <h:form id="menu123" class="menu123">
                 <h:commandButton value="Logout" action="#{Login.logout}"/>
                 <p:button value="Timeline" outcome="timeline"/>
                 <p:button value="Inbox" outcome="inbox"/>
