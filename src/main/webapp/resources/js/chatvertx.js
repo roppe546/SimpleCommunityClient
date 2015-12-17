@@ -2,7 +2,7 @@
  * Created by robin on 17/12/15.
  */
 
-var bus = new EventBus("http://localhost:4000/eventbus");
+var bus = new EventBus("http://130.237.84.200:4000/eventbus");
 
 bus.onopen = function () {
     bus.registerHandler("chat.to.client", function (err, msg) {
