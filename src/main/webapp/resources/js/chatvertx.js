@@ -6,7 +6,7 @@ var bus = new EventBus("http://localhost:4000/eventbus");
 
 bus.onopen = function () {
     bus.registerHandler("chat.to.client", function (err, msg) {
-        $('#m').append(msg.body + "\n");
+        $('#messages').append(msg.body + "\n");
     });
 };
 
@@ -16,8 +16,8 @@ function send(event) {
         var message = $('#u').val() + ": " + $('#m').val();
 
         if (message.length > 0) {
-            bus.publish("chat.to.server", { "username":  $('#u').val(), "theMessage": $('#m').val() } );
-            $('#m').val("");
+            bus.publish("chat.to.server", { "username":  $('#u').val(), "theMessage": $('#input').val()} );
+            $('#input').val("");
         }
     }
 }
