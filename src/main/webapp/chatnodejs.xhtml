@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+    <ui:include src="menu.xhtml"></ui:include>
+    <h:outputText value="Chat (NodeJS client)" style="color: royalblue"/> <br/>
+
+    <ul id="messages" style="list-style-type: none; margin: 0; padding: 0; height: 90%;"></ul>
+    <form action="" id="chatForm" style="background: #bbb; padding: 3px; position: fixed; bottom: 0; width: 100%; height: 10%;">
+        <input type="hidden" id="u" value="#{Login.username}"/>
+        <input id="m" style="border: 0; padding: 20px; width: 90%; bottom: 0; margin-right: 0.5%;"/>
+        <button>Send</button>
+    </form>
+    <h:outputScript library="js" name="socket.io-1.3.7.js"/>
+    <h:outputScript library="js" name="jquery-1.11.1.js"/>
+    <h:outputScript library="js" name="chatnodejs.js"/>
+</h:body>
+</html>
