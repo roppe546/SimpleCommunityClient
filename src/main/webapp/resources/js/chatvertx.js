@@ -6,7 +6,8 @@ var bus = new EventBus("http://localhost:4000/eventbus");
 
 bus.onopen = function () {
     bus.registerHandler("chat.to.client", function (err, msg) {
-        $('#messages').append(msg.body + "\n");
+        var data = JSON.parse(msg.body);
+        $('#messages').append("<li>" + data.username + ": " + data.theMessage + "</li>");
     });
 };
 

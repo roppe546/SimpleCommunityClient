@@ -8,18 +8,19 @@
 <h:body>
     <ui:include src="menu.xhtml"></ui:include>
     <h:outputText value="Chat (Vert.x client)" style="color: royalblue"/> <br/>
-    <h:outputScript library="js" name="sockjs-v1.0.3.js"/>
-    <h:outputScript library="js" name="jquery-1.11.1.js"/>
-    <h:outputScript library="js" name="eventbus.js"/>
-    <h:outputScript library="js" name="chatvertx.js"/>
 
     <ul id="messages" style="list-style-type: none; margin: 0; padding: 0; height: 90%;"></ul>
 
     <!--<form action="" id="chatForm" style="background: #bbb; padding: 3px; position: fixed; bottom: 0; width: 100%; height: 10%;">-->
-        <input type="hidden" id="u" value="#{Login.username}"/>
-        <input id="m" style="border: 0; padding: 20px; width: 90%; bottom: 0; margin-right: 0.5%;"/>
-        <!--<button>Send</button>-->
-        <input id="input" type="text" onkeydown="send(event)"/>
+    <input type="hidden" id="u" value="#{Login.username}"/>
+    <input id="m" style="border: 0; padding: 20px; width: 90%; bottom: 0; margin-right: 0.5%;"/>
+    <!--<button>Send</button>-->
+    <input id="input" type="text" onkeydown="send(event)"/>
     <!--</form>-->
+
+    <h:outputScript library="js" name="sockjs-v1.0.3.js"/>
+    <h:outputScript library="js" name="jquery-1.11.1.js"/>
+    <h:outputScript library="js" name="eventbus.js"/>
+    <h:outputScript library="js" name="chatvertx.js"/>
 </h:body>
 </html>
