@@ -13,9 +13,6 @@ bus.onopen = function () {
 
 function send(event) {
     if (event.keyCode == 13 || event.which == 13) {
-
-        var message = $('#u').val() + ": " + $('#m').val();
-
         if (message.length > 0) {
             bus.publish("chat.to.server", { "username":  $('#u').val(), "theMessage": $('#input').val()} );
             $('#input').val("");
